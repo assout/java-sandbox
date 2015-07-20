@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.locks;
 
 import static org.junit.Assert.*;
 

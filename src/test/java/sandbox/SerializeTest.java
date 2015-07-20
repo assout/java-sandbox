@@ -1,5 +1,7 @@
 package sandbox;
 
+import static org.junit.Assert.*;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Externalizable;
@@ -23,6 +25,8 @@ public class SerializeTest {
 
 	@Test
 	public void testSerialize() throws Exception {
+		assertEquals("foo", "bar");
+		assertTrue(!true);
 		int num = 10000;
 		{
 			long start = System.nanoTime();
