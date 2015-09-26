@@ -2,14 +2,14 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.atomic.AtomicReference;
+
+import junit.framework.AssertionFailedError;
 
 import org.apache.log4j.Logger;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import junit.framework.AssertionFailedError;
 
 public class ThreadTest {
 
@@ -51,7 +51,7 @@ public class ThreadTest {
 		};
 		t1.start();
 		t1.join();
-	}
+	 }
 
 	@Test
 	public void testAssertionOnOtherThreadWithUtil() throws Exception {
@@ -64,6 +64,30 @@ public class ThreadTest {
 		});
 		t1.start();
 		t1.join();
+	}
+
+	@Test
+	public void testAssertionOnOtherThreadWithUncaughtException() throws Throwable {
+		final AtomicReference<Throwable> t = new AtomicReference<Throwable>();
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+			public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
+				t.set(paramThrowable);
+			}
+		});
+
+		Thread t1 = new Thread(new Runnable() {
+			public void run() {
+				LOGGER.info("test");
+				fail("faiiiiil");
+			}
+		});
+
+		t1.start();
+		t1.join();
+
+		if (t.get() != null) {
+			throw t.get();
+		}
 	}
 
 	public abstract class CheckedRunnable implements Runnable {
