@@ -20,12 +20,12 @@ import com.sun.javadoc.SeeTag;
 import com.sun.javadoc.SourcePosition;
 import com.sun.javadoc.Tag;
 
-public class ListClassTest {
+public class ListDocletTest {
 
 	@Test
 	public void testName3() throws Exception {
 		DocumentationTool tool = ToolProvider.getSystemDocumentationTool();
-		DocumentationTask task = tool.getTask(null, null, null, ListClass.class, null, null);
+		DocumentationTask task = tool.getTask(null, null, null, ListDoclet.class, null, null);
 		assertThat(task.call(), is(true));
 	}
 
@@ -35,7 +35,7 @@ public class ListClassTest {
 		StandardJavaFileManager fm = tool.getStandardFileManager(null, null, null);
 		Iterable<? extends JavaFileObject> javaFileObjects = fm.getJavaFileObjects(new File("src/test/java/sandbox/Dummy.java"));
 
-		DocumentationTask task = tool.getTask(null, null, null, ListClass.class, null, javaFileObjects);
+		DocumentationTask task = tool.getTask(null, null, null, ListDoclet.class, null, javaFileObjects);
 		assertThat(task.call(), is(true));
 	}
 	@Test

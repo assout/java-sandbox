@@ -7,7 +7,8 @@ import com.sun.javadoc.LanguageVersion;
 import com.sun.javadoc.RootDoc;
 import com.sun.tools.doclets.formats.html.HtmlDoclet;
 
-public class ListClass extends Doclet {
+public class ListDoclet extends Doclet {
+
 	public static boolean start(RootDoc root) {
 		System.out.println("test");
 		for (String[] o : root.options()) {
