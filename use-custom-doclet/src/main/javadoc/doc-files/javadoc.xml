@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<javadocs>
+    <javadoc fullyQualifiedName="sandbox" location="Package" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/package-info.java" lineNumber="4"> testhhh
+</javadoc>
+    <javadoc fullyQualifiedName="sandbox.App" location="Class" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/App.java" lineNumber="6"> hello
+</javadoc>
+    <javadoc fullyQualifiedName="sandbox.App()" location="Constructor" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/App.java" lineNumber="11"> あは
+ &lt;b&gt;aaaa&lt;/b&gt;
+</javadoc>
+    <javadoc fullyQualifiedName="sandbox.App.main(java.lang.String[])" location="Method" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/App.java" lineNumber="18"> メインだよ
+ 
+ @param args
+</javadoc>
+    <javadoc fullyQualifiedName="sandbox.App.Inner" location="Class" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/App.java" lineNumber="26"> インナーだよ
+ @author oji
+</javadoc>
+    <javadoc fullyQualifiedName="sandbox.App.Inner.CONST" location="Field" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/App.java" lineNumber="30"> 定数だよ
+</javadoc>
+    <javadoc fullyQualifiedName="sandbox.App.Inner()" location="Constructor" file="/home/oji/Development/src/github.com/assout/doclet-sandbox/use-custom-doclet/src/main/java/sandbox/App.java" lineNumber="26"></javadoc>
+</javadocs>

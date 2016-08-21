@@ -1,9 +1,10 @@
-package sandbox;
+package com.xxx.yyy.zzz.doclets;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
+import java.util.Collections;
 
 import javax.tools.DocumentationTool;
 import javax.tools.DocumentationTool.DocumentationTask;
@@ -19,6 +20,13 @@ import com.sun.javadoc.RootDoc;
 import com.sun.javadoc.SeeTag;
 import com.sun.javadoc.SourcePosition;
 import com.sun.javadoc.Tag;
+import com.sun.tools.javac.util.Context;
+import com.sun.tools.javac.util.ListBuffer;
+import com.sun.tools.javadoc.JavadocTool;
+import com.sun.tools.javadoc.ModifierFilter;
+import com.sun.tools.javadoc.PublicMessager;
+import com.sun.tools.javadoc.RootDocImpl;
+import com.xxx.yyy.zzz.doclets.ListDoclet;
 
 public class ListDocletTest {
 
@@ -33,35 +41,85 @@ public class ListDocletTest {
 	public void testName2() throws Exception {
 		DocumentationTool tool = ToolProvider.getSystemDocumentationTool();
 		StandardJavaFileManager fm = tool.getStandardFileManager(null, null, null);
-		Iterable<? extends JavaFileObject> javaFileObjects = fm.getJavaFileObjects(new File("src/test/java/sandbox/Dummy.java"));
+		Iterable<? extends JavaFileObject> javaFileObjects = fm
+				.getJavaFileObjects(new File("src/test/java/sandbox/Dummy.java"));
 
 		DocumentationTask task = tool.getTask(null, null, null, ListDoclet.class, null, javaFileObjects);
 		assertThat(task.call(), is(true));
 	}
+
+	// http://planet.jboss.org/post/testing_java_doclets0
+	@Test
+	public void testName4() throws Exception {
+		String[] packageNames = { "sandbox" };
+		File[] fileNames = { new File("src/test/java/sandbox/Dummy.java") };
+
+		Context context = new Context();
+		new PublicMessager(context, "dummyMessager");
+
+		JavadocTool javadocTool = JavadocTool.make0(context);
+
+		ListBuffer<String> javaNames = new ListBuffer<String>();
+		for (File fileName : fileNames) {
+			javaNames.append(fileName.getPath());
+		}
+
+		ListBuffer<String> subPackages = new ListBuffer<String>();
+		for (String packageName : packageNames) {
+			subPackages.append(packageName);
+		}
+
+		RootDocImpl rootDocImpl = javadocTool.getRootDocImpl(
+				"",
+				"",
+				new ModifierFilter(ModifierFilter.ALL_ACCESS),
+				javaNames.toList(),
+				new ListBuffer<String[]>().toList(),
+				Collections.emptyList(),
+				false,
+				subPackages.toList(),
+				new ListBuffer<String>().toList(),
+				false,
+				false,
+				false);
+
+		System.out.println(rootDocImpl);
+		for (ClassDoc classes : rootDocImpl.classes()) {
+			System.out.println(classes);
+			System.out.println(classes.getRawCommentText());
+		}
+	}
+
 	@Test
 	public void testName() throws Exception {
-//		DocumentationTool tool = ToolProvider.getSystemDocumentationTool();
-//
-//		DiagnosticCollector<JavaFileObject> diag = new DiagnosticCollector<>();
-//		try (StandardJavaFileManager fileManager = tool.getStandardFileManager(diag, null, null)) {
-//			fileManager.setLocation(DocumentationTool.Location.DOCUMENTATION_OUTPUT, Arrays.asList(outputDir));
-//			fileManager.setLocation(StandardLocation.SOURCE_PATH, Arrays.asList(srcDir));
-//			Writer out = null; // use STDERR(System.err)
-//			Class<?> docletClass = null; // use default doclet
-//			Iterable<String> options = Arrays.asList("-private");
-//			Iterable<? extends JavaFileObject> compilationUnits = fileManager.list( //
-//					StandardLocation.SOURCE_PATH, // location
-//					rootPackage, // package name
-//					EnumSet.of(JavaFileObject.Kind.SOURCE), // kinds
-//					true); // recurse
-//			DocumentationTool.DocumentationTask task = tool.getTask(out, fileManager, diag, docletClass, options,
-//					compilationUnits);
-//			if (task.call())
-//				System.out.println("OK");
-//			else
-//				for (Diagnostic<? extends JavaFileObject> o : diag.getDiagnostics())
-//					System.out.println(o.getMessage(null));
-//		}
+		// DocumentationTool tool = ToolProvider.getSystemDocumentationTool();
+		//
+		// DiagnosticCollector<JavaFileObject> diag = new
+		// DiagnosticCollector<>();
+		// try (StandardJavaFileManager fileManager =
+		// tool.getStandardFileManager(diag, null, null)) {
+		// fileManager.setLocation(DocumentationTool.Location.DOCUMENTATION_OUTPUT,
+		// Arrays.asList(outputDir));
+		// fileManager.setLocation(StandardLocation.SOURCE_PATH,
+		// Arrays.asList(srcDir));
+		// Writer out = null; // use STDERR(System.err)
+		// Class<?> docletClass = null; // use default doclet
+		// Iterable<String> options = Arrays.asList("-private");
+		// Iterable<? extends JavaFileObject> compilationUnits =
+		// fileManager.list( //
+		// StandardLocation.SOURCE_PATH, // location
+		// rootPackage, // package name
+		// EnumSet.of(JavaFileObject.Kind.SOURCE), // kinds
+		// true); // recurse
+		// DocumentationTool.DocumentationTask task = tool.getTask(out,
+		// fileManager, diag, docletClass, options,
+		// compilationUnits);
+		// if (task.call())
+		// System.out.println("OK");
+		// else
+		// for (Diagnostic<? extends JavaFileObject> o : diag.getDiagnostics())
+		// System.out.println(o.getMessage(null));
+		// }
 	}
 
 	@Test
