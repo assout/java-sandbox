@@ -41,7 +41,7 @@ public class XmlDocletTest {
 	}
 
 	@Test
-	@Ignore("疎通用")
+//	@Ignore("疎通用")
 	public void test() throws IOException {
 		/* Setup */
 		List<String> options = Arrays.asList("-commentpath", xml.toString());
@@ -70,7 +70,6 @@ public class XmlDocletTest {
 		Javadoc expected = new Javadoc(TestingFile.PACKAGE_FQN, TestingFile.PACKAGE_COMMENT, LocationType.Package, null,
 				TestingFile.PACKAGE_FILE_PATH, TestingFile.PACKAGE_LINE);
 		Javadoc actual = getActual(xml).getJavadocsMap().get(expected.fullyQualifiedName);
-		System.out.println(getActual(xml));
 
 		assertThat(actual, is(expected));
 	}
@@ -181,6 +180,18 @@ public class XmlDocletTest {
 	public void testInvalidOptionArgs_noArgs() throws IOException {
 		/* Setup */
 		List<String> options = Arrays.asList("-commentpath");
+
+		/* Exercise */
+		boolean callTask = callTask(options, TestingFile.FILE_PATH);
+
+		/* Verify */
+		assertThat(callTask, is(false));
+	}
+
+	@Test
+	public void testInvalidOptionArgs_canNotMakeParent() throws IOException {
+		/* Setup */
+		List<String> options = Arrays.asList("-commentpath", "/");
 
 		/* Exercise */
 		boolean callTask = callTask(options, TestingFile.FILE_PATH);

@@ -23,11 +23,9 @@ public class LocalizeDoclet extends Doclet {
 	private final Map<String, Javadoc> javadocsMap;
 
 	public LocalizeDoclet(Path commentPath) {
-		System.out.println("path:" + commentPath);
 		Javadocs javadocs = JAXB.unmarshal(commentPath.toUri(), Javadocs.class);
 		System.out.println(javadocs);
 		javadocsMap = javadocs.getJavadocsMap();
-		System.out.println(javadocsMap);
 	}
 
 	/**
@@ -81,10 +79,7 @@ public class LocalizeDoclet extends Doclet {
 			Javadoc data = javadocsMap.get(key);
 			if (data != null) {
 				doc.setRawCommentText(data.comment);
-			} else {
-				System.out.println("nooooooo" + data);
 			}
-
 		}
 	}
 
