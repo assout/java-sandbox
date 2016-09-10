@@ -29,11 +29,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Goal which touches a timestamp file.
+ * Goal which touches a timestamp file. yes.
  *
  * @deprecated Don't use!
  */
-@Mojo( name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES )
+@Mojo( name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class MyMojo
     extends AbstractMojo
 {

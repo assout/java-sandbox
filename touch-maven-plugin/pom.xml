@@ -8,7 +8,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>plugin</artifactId>
+	<artifactId>touch-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 
 	<name>maven-plugin-sandbox Maven Plugin</name>

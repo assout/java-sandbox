@@ -13,7 +13,7 @@
 	</properties>
 
 	<modules>
-		<module>plugin</module>
+		<module>touch-maven-plugin</module>
 		<module>use-app</module>
 	</modules>
 </project>
