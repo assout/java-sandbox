@@ -1,5 +1,9 @@
 package sandbox;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
  *
@@ -18,15 +22,9 @@ package sandbox;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.plugins.annotations.ResolutionScope;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * Goal which touches a timestamp file. yes.
