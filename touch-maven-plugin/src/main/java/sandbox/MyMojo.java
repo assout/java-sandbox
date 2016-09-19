@@ -24,21 +24,26 @@ import org.apache.maven.model.Resource;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
+import org.sonatype.plexus.build.incremental.BuildContext;
 
 /**
  * Goal which touches a timestamp file. yes.
  */
-@Mojo(name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
+@Mojo(name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES, requiresProject = true)
 public class MyMojo extends AbstractMojo {
 	/**
 	 * The Maven project instance for the executing project.
 	 */
 	@Parameter(defaultValue = "${project}", readonly = true, required = true)
 	private MavenProject project;
+
+	@Component
+	private BuildContext buildContext;
 
 	/**
 	 * Location of the file.
@@ -55,6 +60,7 @@ public class MyMojo extends AbstractMojo {
 	}
 
 	public void execute() throws MojoExecutionException {
+
 		File f = outputDirectory;
 
 		if (!f.exists()) {
@@ -62,6 +68,10 @@ public class MyMojo extends AbstractMojo {
 		}
 
 		File touch = new File(f, "touch.txt");
+//		if (!buildContext.hasDelta(touch)) {
+//			getLog().info("Skipping unchanged model: " + touch);
+//			return;
+//		}
 
 		FileWriter w = null;
 		try {
