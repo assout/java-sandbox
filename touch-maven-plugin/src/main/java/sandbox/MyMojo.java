@@ -28,8 +28,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 /**
  * Goal which touches a timestamp file. yes.
- *
- * @deprecated Don't use!
  */
 @Mojo( name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class MyMojo
@@ -41,7 +39,15 @@ public class MyMojo
     @Parameter( defaultValue = "${project.build.directory}", property = "outputDir", required = true )
     private File outputDirectory;
 
-    public void execute()
+    public File getOutputDirectory() {
+		return outputDirectory;
+	}
+
+	public void setOutputDirectory(File outputDirectory) {
+		this.outputDirectory = outputDirectory;
+	}
+
+	public void execute()
         throws MojoExecutionException
     {
         File f = outputDirectory;
