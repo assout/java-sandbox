@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.maven.model.Resource;
+
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
  *
@@ -25,21 +27,26 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 /**
  * Goal which touches a timestamp file. yes.
  */
-@Mojo( name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
-public class MyMojo
-    extends AbstractMojo
-{
-    /**
-     * Location of the file.
-     */
-    @Parameter( defaultValue = "${project.build.directory}", property = "outputDir", required = true )
-    private File outputDirectory;
+@Mojo(name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
+public class MyMojo extends AbstractMojo {
+	/**
+	 * The Maven project instance for the executing project.
+	 */
+	@Parameter(defaultValue = "${project}", readonly = true, required = true)
+	private MavenProject project;
 
-    public File getOutputDirectory() {
+	/**
+	 * Location of the file.
+	 */
+	@Parameter(defaultValue = "${project.build.directory}", property = "outputDir", required = true)
+	private File outputDirectory;
+
+	public File getOutputDirectory() {
 		return outputDirectory;
 	}
 
@@ -47,42 +54,34 @@ public class MyMojo
 		this.outputDirectory = outputDirectory;
 	}
 
-	public void execute()
-        throws MojoExecutionException
-    {
-        File f = outputDirectory;
+	public void execute() throws MojoExecutionException {
+		File f = outputDirectory;
 
-        if ( !f.exists() )
-        {
-            f.mkdirs();
-        }
+		if (!f.exists()) {
+			f.mkdirs();
+		}
 
-        File touch = new File( f, "touch.txt" );
+		File touch = new File(f, "touch.txt");
 
-        FileWriter w = null;
-        try
-        {
-            w = new FileWriter( touch );
+		FileWriter w = null;
+		try {
+			w = new FileWriter(touch);
 
-            w.write( "touch.txt" );
-        }
-        catch ( IOException e )
-        {
-            throw new MojoExecutionException( "Error creating file " + touch, e );
-        }
-        finally
-        {
-            if ( w != null )
-            {
-                try
-                {
-                    w.close();
-                }
-                catch ( IOException e )
-                {
-                    // ignore
-                }
-            }
-        }
-    }
+			w.write("touch.txt");
+		} catch (IOException e) {
+			throw new MojoExecutionException("Error creating file " + touch, e);
+		} finally {
+			if (w != null) {
+				try {
+					w.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
+		}
+
+		Resource resource = new Resource();
+		resource.setDirectory(outputDirectory.getAbsolutePath());
+		project.addResource(resource);
+	}
 }

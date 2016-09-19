@@ -35,7 +35,7 @@
 						</goals>
 						<inherited>false</inherited>
 						<configuration>
-							<outputDirectory>/home/oji</outputDirectory>
+							<outputDirectory>${project.build.directory}/generated</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
