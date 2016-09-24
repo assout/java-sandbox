@@ -6,7 +6,7 @@ import java.util.WeakHashMap;
 
 import org.junit.Test;
 
-public class RefTest {
+public class ReferenceTest {
 
 	/**
 	 * http://www.ne.jp/asahi/hishidama/home/tech/java/weak.html
