@@ -32,10 +32,11 @@
 						<id>exe</id>
 						<goals>
 							<goal>touch</goal>
+							<goal>test-touch</goal>
 						</goals>
 						<inherited>false</inherited>
 						<configuration>
-							<outputDirectory>${project.build.directory}/generated</outputDirectory>
+							<!-- <outputDirectory>${project.build.directory}/generated</outputDirectory> -->
 						</configuration>
 					</execution>
 				</executions>

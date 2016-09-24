@@ -34,13 +34,13 @@ import org.sonatype.plexus.build.incremental.BuildContext;
 /**
  * Goal which touches a timestamp file. yes.
  */
-@Mojo(name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES, requiresProject = true)
-public class MyMojo extends MyAbstractMojo {
+@Mojo(name = "test-touch", defaultPhase = LifecyclePhase.PROCESS_TEST_SOURCES, requiresProject = true)
+public class MyTestMojo extends MyAbstractMojo {
 
 	/**
 	 * Location of the file.
 	 */
-	@Parameter(defaultValue = "${project.build.directory}", property = "outputDir", required = true)
+	@Parameter(defaultValue = "${project.build.directory}/test", property = "outputDir", required = true)
 	private File outputDirectory;
 
 	public File getOutputDirectory() {

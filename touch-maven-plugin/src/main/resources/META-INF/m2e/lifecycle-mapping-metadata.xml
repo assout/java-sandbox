@@ -4,6 +4,7 @@
 			<pluginExecutionFilter>
 				<goals>
 					<goal>touch</goal>
+					<goal>test-touch</goal>
 				</goals>
 			</pluginExecutionFilter>
 			<action>

@@ -34,21 +34,51 @@ import org.sonatype.plexus.build.incremental.BuildContext;
 /**
  * Goal which touches a timestamp file. yes.
  */
-@Mojo(name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES, requiresProject = true)
-public class MyMojo extends MyAbstractMojo {
-
+public abstract class MyAbstractMojo extends AbstractMojo {
 	/**
-	 * Location of the file.
+	 * The Maven project instance for the executing project.
 	 */
-	@Parameter(defaultValue = "${project.build.directory}", property = "outputDir", required = true)
-	private File outputDirectory;
+	@Parameter(defaultValue = "${project}", readonly = true, required = true)
+	private MavenProject project;
 
-	public File getOutputDirectory() {
-		return outputDirectory;
+	@Component
+	private BuildContext buildContext;
+
+	public abstract File getOutputDirectory();
+
+	public void execute() throws MojoExecutionException {
+
+		File f = getOutputDirectory();
+
+		if (!f.exists()) {
+			f.mkdirs();
+		}
+
+		File touch = new File(f, "touch.txt");
+//		if (!buildContext.hasDelta(touch)) {
+//			getLog().info("Skipping unchanged model: " + touch);
+//			return;
+//		}
+
+		FileWriter w = null;
+		try {
+			w = new FileWriter(touch);
+
+			w.write("touch.txt");
+		} catch (IOException e) {
+			throw new MojoExecutionException("Error creating file " + touch, e);
+		} finally {
+			if (w != null) {
+				try {
+					w.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
+		}
+
+		Resource resource = new Resource();
+		resource.setDirectory(getOutputDirectory().getAbsolutePath());
+		project.addResource(resource);
 	}
-
-	public void setOutputDirectory(File outputDirectory) {
-		this.outputDirectory = outputDirectory;
-	}
-
 }
