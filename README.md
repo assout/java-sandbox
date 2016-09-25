@@ -1,10 +1,10 @@
 # Java sandbox
 
-- [doclet](doclet)
-- [freemmarker](freemmarker)
-- [jmh](jmh)
-- [junit](junit)
-- [maven-plugin](maven-plugin)
-- [se-1.7](se-1.7)
-- [spark-framework](spark-framework)
-- [weld](weld)
+- [Apache FreeMarker](freemarker) : Template engine
+- [JBoss Weld](weld) : Reference implementation of CDI
+- [JMH(Java Micro-benchmarking Harness)](jmh)
+- [JUnit](junit)
+- [Java SE 1.7](se-1.7)
+- [Javadoc Doclet](doclet)
+- [Maven Plugin](maven-plugin)
+- [Spark framework](spark-framework) : Micro framework
