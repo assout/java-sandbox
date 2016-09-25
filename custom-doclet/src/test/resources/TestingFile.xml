@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<javadocs>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile" locationType="Class" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="6">クラスコメント</javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile.TESTING_FIELD" locationType="Field" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="19">フィールドコメント</javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile()" locationType="Constructor" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="35">コンストラクタコメント</javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile.testingMethod()" locationType="Method" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="43">メソッドコメント</javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile.TestingEnum" locationType="Class" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="25">Enumクラスコメント</javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile.TestingEnum.ITEM" locationType="EnumConst" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="27">Enum定数値コメント</javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile.TestingEnum.values()" locationType="Method" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="25"></javadoc>
+    <javadoc fullyQualifiedName="com.xxx.yyy.zzz.doclets.TestingFile.TestingEnum.valueOf(java.lang.String)" locationType="Method" scope="Public" sourceFile="src/test/java/com/xxx/yyy/zzz/doclets/TestingFile.java" lineNumber="25"></javadoc>
+</javadocs>
