@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.java.lang;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;

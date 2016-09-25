@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.java;
 
 
 public class LazyInitializationTest {

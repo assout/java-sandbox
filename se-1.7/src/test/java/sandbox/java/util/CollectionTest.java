@@ -1,4 +1,4 @@
-package sandbox.util;
+package sandbox.java.util;
 
 import java.util.HashMap;
 import java.util.Map;

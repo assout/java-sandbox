@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.java.lang;
 
 import static org.junit.Assert.*;
 

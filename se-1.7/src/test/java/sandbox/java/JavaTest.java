@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.java;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;

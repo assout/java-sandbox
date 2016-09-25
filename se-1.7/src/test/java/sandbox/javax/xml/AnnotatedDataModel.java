@@ -1,4 +1,4 @@
-package sandbox.jaxb;
+package sandbox.javax.xml;
 
 import java.util.List;
 
