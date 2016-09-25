@@ -1,6 +1,7 @@
 # Java sandbox
 
 - [doclet](doclet)
+- [freemmarker](freemmarker)
 - [jmh](jmh)
 - [junit](junit)
 - [maven-plugin](maven-plugin)
