@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 import org.junit.Rule;
@@ -16,7 +18,30 @@ public class PropertiesTest {
 	public TemporaryFolder folder = new TemporaryFolder();
 
 	@Test
-	public void testName() throws Exception {
+	public void test文字化け() throws Exception {
+		{
+			Properties p = new Properties();
+			p.load(this.getClass().getClassLoader().getResourceAsStream("java/util/test.properties"));
+			System.out.println(p);
+		}
+		{
+			Properties p = new Properties();
+			p.load(this.getClass().getClassLoader().getResourceAsStream("java/util/test2.properties"));
+			System.out.println(p);
+		}
+	}
+
+	@Test
+	public void test文字コード指定() throws Exception {
+		InputStream is = this.getClass().getClassLoader().getResourceAsStream("java/util/test.properties");
+		InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+		Properties p = new Properties();
+		p.load(isr);
+		System.out.println(p);
+	}
+
+	@Test
+	public void testSimple() throws Exception {
 		// Propertiesオブジェクトを生成
 		Properties properties = new Properties();
 

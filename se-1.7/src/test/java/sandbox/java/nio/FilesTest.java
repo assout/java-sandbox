@@ -1,9 +1,14 @@
 package sandbox.java.nio;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
@@ -16,7 +21,15 @@ public class FilesTest {
 	public TemporaryFolder folder = new TemporaryFolder();
 
 	@Test
-	public void testName() throws Exception {
+	public void testGlob() throws Exception {
+		Path write = Files.write(folder.getRoot().toPath().resolve("test.txt"), "test".getBytes());
+
+		PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:*.txt");
+		assertThat(pathMatcher.matches(write.getFileName()), is(true));
+	}
+
+	@Test
+	public void testWalktree() throws Exception {
 		Files.write(folder.getRoot().toPath().resolve("test.txt"), "test".getBytes());
 		Files.walkFileTree(folder.getRoot().toPath(), new DeleteVisitor(folder.getRoot().toPath()));
 	}
