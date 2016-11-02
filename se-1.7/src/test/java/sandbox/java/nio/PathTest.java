@@ -22,5 +22,26 @@ public class PathTest {
 		System.out.println(Paths.get("/").toAbsolutePath().getRoot());
 	}
 
+	@Test
+	public void testGetFileName() throws Exception {
+		System.out.println(Paths.get("C:\\test").getFileName());
+		System.out.println(Paths.get("D:\\test").getFileName());
+		System.out.println(Paths.get("test").getFileName());
+		System.out.println(Paths.get("D:").getFileName());
+		System.out.println(Paths.get("D:\\admin").getFileName());
+		System.out.println(Paths.get("/").getFileName());
+		System.out.println(Paths.get("/admin").getFileName());
+		System.out.println(Paths.get("/hoge.xml").getFileName());
+		System.out.println("absolute");
+		System.out.println(Paths.get("C:\\test").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("D:\\test").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("test").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("D:").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("D:\\admin").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("/").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("/admin").toAbsolutePath().getFileName());
+		System.out.println(Paths.get("/hoge.xml").toAbsolutePath().getFileName());
+	}
+
 }
 
