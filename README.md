@@ -6,5 +6,5 @@
 - [JUnit](junit)
 - [Java SE 1.7](se-1.7)
 - [Javadoc Doclet](doclet)
-- [Maven Plugin](maven-plugin)
+- [Maven](maven)
 - [Spark framework](spark-framework) : Micro framework
