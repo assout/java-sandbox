@@ -1,5 +1,9 @@
 package sandbox.java.lang;
 
+import java.lang.Exception;
+import java.lang.Integer;
+import java.lang.String;
+import java.lang.System;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.WeakHashMap;

@@ -1,4 +1,4 @@
-package sandbox.java.concurrent;
+package sandbox.java.util.concurrent;
 
 import static org.junit.Assert.*;
 

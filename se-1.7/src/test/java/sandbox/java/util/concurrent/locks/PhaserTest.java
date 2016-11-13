@@ -1,4 +1,4 @@
-package sandbox.java.concurrent.locks;
+package sandbox.java.util.concurrent.locks;
 
 import static org.junit.Assert.*;
 
