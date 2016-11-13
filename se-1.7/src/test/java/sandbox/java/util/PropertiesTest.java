@@ -33,7 +33,7 @@ public class PropertiesTest {
 
 	@Test
 	public void test文字コード指定() throws Exception {
-		InputStream is = this.getClass().getClassLoader().getResourceAsStream("java/util/test.properties");
+		InputStream is = this.getClass().getResourceAsStream("test.properties");
 		InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 		Properties p = new Properties();
 		p.load(isr);
