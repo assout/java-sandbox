@@ -1,13 +1,9 @@
 package sandbox.java.util.concurrent.locks;
 
-import static org.junit.Assert.*;
-
-import java.awt.MultipleGradientPaint.CycleMethod;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -87,6 +83,32 @@ public class LocksTest {
 			Thread.sleep(1000);
 		}
 		service.shutdown();
+	}
+
+	@Test
+	public void testReentrantLock() throws Exception {
+		final ReentrantLock lock = new ReentrantLock();
+		lock.lock(); // block until condition holds
+		lock.lock(); // block until condition holds
+		Thread.sleep(Long.MAX_VALUE);
+	}
+
+	@Test
+	public void testReentrantLockOtherThread() throws Exception {
+		final ReentrantLock lock = new ReentrantLock();
+		new Thread() {
+			public void run() {
+				lock.lock();
+				try {
+					Thread.sleep(Long.MAX_VALUE);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			};
+		}.start();
+		Thread.sleep(1000L);
+		lock.lock(); // block until condition holds
 	}
 }
 
