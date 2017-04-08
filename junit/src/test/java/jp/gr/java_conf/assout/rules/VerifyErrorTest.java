@@ -1,4 +1,4 @@
-package test.rules;
+package jp.gr.java_conf.assout.rules;
 
 import static org.hamcrest.CoreMatchers.is;
 

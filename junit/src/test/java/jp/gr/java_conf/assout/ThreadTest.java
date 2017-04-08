@@ -1,4 +1,4 @@
-package test;
+package jp.gr.java_conf.assout;
 
 import static org.junit.Assert.*;
 

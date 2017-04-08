@@ -1,4 +1,4 @@
-package test;
+package jp.gr.java_conf.assout;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

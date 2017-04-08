@@ -1,4 +1,4 @@
-package test;
+package jp.gr.java_conf.assout;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

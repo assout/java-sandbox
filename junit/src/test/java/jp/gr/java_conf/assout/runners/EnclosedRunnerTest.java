@@ -1,4 +1,4 @@
-package test.runners;
+package jp.gr.java_conf.assout.runners;
 
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;

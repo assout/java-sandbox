@@ -1,4 +1,4 @@
-package test.rules;
+package jp.gr.java_conf.assout.rules;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
