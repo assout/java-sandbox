@@ -1,5 +1,6 @@
-package test.rule;
+package test.rules;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.junit.Rule;
@@ -124,4 +125,16 @@ public class RuleTest {
 			throw new NumberFormatException("test");
 		}
 	}
+
+	public static class TimeoutTest {
+
+		@Rule
+		public Timeout timeout = new Timeout(100L, TimeUnit.MILLISECONDS);
+
+		@Test
+		public void testTimeout() throws InterruptedException {
+			Thread.sleep(1000L);
+		}
+	}
+
 }

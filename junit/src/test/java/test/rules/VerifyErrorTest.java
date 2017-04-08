@@ -1,4 +1,4 @@
-package test.rule;
+package test.rules;
 
 import static org.hamcrest.CoreMatchers.is;
 

@@ -1,4 +1,4 @@
-package test.runner;
+package test.runners;
 
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
