@@ -20,7 +20,7 @@ import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("javadoc")
+@SuppressWarnings("all")
 @RunWith(Enclosed.class)
 public class JavaTest {
 
