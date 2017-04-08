@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.junit.Rule;
@@ -47,7 +48,7 @@ public class JUnitTest {
 	public static class TimeoutTest {
 
 		@Rule
-		Timeout timeout = new Timeout(1000);
+		Timeout timeout = new Timeout(10L, TimeUnit.MINUTES);
 
 		public void testTimeout() {
 

@@ -1,4 +1,4 @@
-package test;
+package test.rule;
 
 import java.util.logging.Logger;
 
@@ -16,10 +16,9 @@ import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 
 @RunWith(Enclosed.class)
-public class VariousTest {
+public class RuleTest {
 
-	private static Logger logger = Logger
-			.getLogger(VariousTest.class.getName());
+	private static Logger logger = Logger.getLogger(RuleTest.class.getName());
 
 	public static class DisableOnDebugTest {
 		@Rule
@@ -68,6 +67,30 @@ public class VariousTest {
 			// nop
 		}
 
+	}
+
+	public static class TestWatcherTest {
+		@Rule
+		public TestWatcher w = new TestWatcher() {
+			@Override
+			protected void starting(Description description) {
+				logger.info("start: " + description.getDisplayName());
+			}
+
+			protected void finished(Description description) {
+				logger.info("finished: " + description.getDisplayName());
+			};
+		};
+
+		@Test
+		public void test() {
+			System.out.println("hoge");
+		}
+
+		@Test
+		public void test2() {
+			System.out.println("hoge2");
+		}
 	}
 
 	public static class ExpectedExceptionWithLoggingTest {
