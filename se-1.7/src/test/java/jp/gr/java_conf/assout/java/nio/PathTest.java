@@ -1,7 +1,5 @@
 package jp.gr.java_conf.assout.java.nio;
 
-import static org.junit.Assert.*;
-
 import java.nio.file.Paths;
 
 import org.junit.Test;

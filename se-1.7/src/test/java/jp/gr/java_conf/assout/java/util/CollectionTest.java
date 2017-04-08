@@ -32,6 +32,8 @@ public class CollectionTest {
 	}
 
 	class MyMap extends HashMap<String, String> {
+		private static final long serialVersionUID = 1L;
+
 		@Override
 		public Set<java.util.Map.Entry<String, String>> entrySet() {
 			LOGGER.info("test");

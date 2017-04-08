@@ -1,7 +1,5 @@
 package jp.gr.java_conf.assout.java;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class JavaMemoryModelTest {

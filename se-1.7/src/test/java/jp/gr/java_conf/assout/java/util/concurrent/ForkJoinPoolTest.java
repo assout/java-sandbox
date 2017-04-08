@@ -1,7 +1,5 @@
 package jp.gr.java_conf.assout.java.util.concurrent;
 
-import static org.junit.Assert.*;
-
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;

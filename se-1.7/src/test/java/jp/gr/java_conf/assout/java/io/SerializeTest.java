@@ -1,6 +1,7 @@
 package jp.gr.java_conf.assout.java.io;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -32,7 +33,7 @@ public class SerializeTest {
 			long start = System.nanoTime();
 			for (int i = 0; i < num; i++) {
 				byte[] serialized = serialize(new MySerializable(8092));
-				Object deserialized = deserialize(serialized);
+				deserialize(serialized);
 			}
 			long end = System.nanoTime();
 			long duration = end - start;
@@ -133,6 +134,7 @@ public class SerializeTest {
 }
 
 class MySerializable implements Serializable {
+	private static final long serialVersionUID = 1L;
 	String data;
 
 	public MySerializable() {

@@ -1,8 +1,5 @@
 package jp.gr.java_conf.assout.java.util.concurrent.locks;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
 import java.util.concurrent.Phaser;
 
 import org.junit.Test;
@@ -49,7 +46,6 @@ public class PhaserTest {
 
 	@Test
 	public void testPhase2() throws Exception {
-		Phaser phaser = new Phaser();
-
+//		Phaser phaser = new Phaser();
 	}
 }
