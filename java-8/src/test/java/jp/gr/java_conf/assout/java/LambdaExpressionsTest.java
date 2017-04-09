@@ -54,17 +54,18 @@ public class LambdaExpressionsTest {
 				this.name = name;
 			}
 
-			final String name;
-
-			public String getName() {
-				return name;
-			}
-
+			private final String name;
 		}
 
 		List<Developer> devels = Arrays.asList(new Developer("hoge"), new Developer("fuga"));
 
-		devels.sort((Developer o1, Developer o2) -> o1.getName().compareTo(o2.getName()));
+		// 簡易版
+		devels.sort((Developer o1, Developer o2) -> o1.name.compareTo(o2.name));
+
+		// ちゃんと定義した場合
+		devels.sort((Developer o1, Developer o2) -> {
+			return o1.name.compareTo(o2.name);
+		});
 
 		System.out.println(devels);
 	}
