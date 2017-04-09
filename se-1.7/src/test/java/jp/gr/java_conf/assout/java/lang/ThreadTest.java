@@ -26,7 +26,7 @@ public class ThreadTest {
 	public Timeout timeout = new Timeout(5, TimeUnit.SECONDS);
 
 	@Test
-	public void testUncaughtExceptionHanler() throws Exception {
+	public void testDefaultUncaughtException() throws Exception {
 		Thread t1 = new Thread() {
 			@Override
 			public void run() {
@@ -35,19 +35,45 @@ public class ThreadTest {
 		};
 		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
 			public void uncaughtException(Thread thread, Throwable throwable) {
-				LOGGER.error("error", throwable);
-				LOGGER.info(thread.getId());
-				LOGGER.info(Thread.currentThread().getId());
+				LOGGER.error("#1: error", throwable);
+				LOGGER.info("#2: " + thread.getId());
+				LOGGER.info("#3: " + Thread.currentThread().getId());
 				fail();
 			}
 		});
-		LOGGER.info(Thread.currentThread().getId());
+		LOGGER.info("#4 " + Thread.currentThread().getId());
 		t1.start();
 		t1.join();
 	}
 
+	@Test
+	public void testUncaughtException() throws Exception {
+		Thread t1 = new Thread() {
+			@Override
+			public void run() {
+				throw new RuntimeException("my error");
+			}
+		};
+		t1.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+			public void uncaughtException(Thread thread, Throwable throwable) {
+				LOGGER.error("#1: error", throwable);
+				LOGGER.info("#2: " + thread.getId());
+				LOGGER.info("#3: " + Thread.currentThread().getId());
+				fail();
+			}
+		});
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+			public void uncaughtException(Thread thread, Throwable throwable) {
+				LOGGER.info("#5: " + thread.getId());
+			}
+		});
+		LOGGER.info("#4 " + Thread.currentThread().getId());
+		t1.start();
+		t1.join();
+	}
 
 	boolean running = true;
+
 	/**
 	 * http://stackoverflow.com/questions/5816790/the-code-example-which-can-
 	 * prove-volatile-declare-should-be-used
