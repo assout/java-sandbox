@@ -135,6 +135,11 @@ public class RuleTest {
 		public void testTimeout() throws InterruptedException {
 			Thread.sleep(1000L);
 		}
+
+		@Test(timeout = 2L)
+		public void testTimeoutAnnotation() throws InterruptedException {
+			Thread.sleep(1000L);
+		}
 	}
 
 }
