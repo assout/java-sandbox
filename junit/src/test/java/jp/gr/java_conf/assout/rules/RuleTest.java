@@ -3,11 +3,14 @@ package jp.gr.java_conf.assout.rules;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.rules.DisableOnDebug;
 import org.junit.rules.ExpectedException;
+import org.junit.rules.ExternalResource;
 import org.junit.rules.RuleChain;
 import org.junit.rules.Stopwatch;
 import org.junit.rules.TestRule;
@@ -20,6 +23,36 @@ import org.junit.runner.RunWith;
 public class RuleTest {
 
 	private static Logger logger = Logger.getLogger(RuleTest.class.getName());
+
+	public static class RuleGeneralTest {
+
+		@Rule
+		public TestWatcher wathcer = new TestWatcher() {
+			protected void starting(Description description) {
+				logger.info("starting");
+			};
+
+			@Override
+			protected void finished(Description description) {
+				logger.info("finished");
+			}
+		};
+
+		@Before
+		public void before() {
+			logger.info("before");
+		}
+
+		@After
+		public void after() {
+			logger.info("after");
+		}
+
+		@Test
+		public void testName() {
+
+		}
+	}
 
 	public static class DisableOnDebugTest {
 		@Rule
@@ -139,6 +172,34 @@ public class RuleTest {
 		@Test(timeout = 2L)
 		public void testTimeoutAnnotation() throws InterruptedException {
 			Thread.sleep(1000L);
+		}
+	}
+
+	public static class ExternalResourceTest {
+		@Rule
+		public ExternalResource reource = new ExternalResource() {
+			protected void before() throws Throwable {
+				logger.info("before resource");
+			};
+
+			protected void after() {
+				logger.info("after resource");
+			};
+		};
+
+		@Before
+		public void before() {
+			logger.info("before");
+		}
+
+		@After
+		public void after() {
+			logger.info("after");
+		}
+
+		@Test
+		public void testName() {
+
 		}
 	}
 
