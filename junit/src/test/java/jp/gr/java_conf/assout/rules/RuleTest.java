@@ -203,4 +203,32 @@ public class RuleTest {
 		}
 	}
 
+	public static class ExternalResourceFailTest {
+		@Rule
+		public ExternalResource reource = new ExternalResource() {
+			protected void before() throws Throwable {
+				logger.info("before resource");
+				throw new RuntimeException("testing execption");
+			};
+
+			protected void after() {
+				logger.info("after resource");
+			};
+		};
+
+		@Before
+		public void before() {
+			logger.info("before");
+		}
+
+		@After
+		public void after() {
+			logger.info("after");
+		}
+
+		@Test
+		public void testName() {
+
+		}
+	}
 }
