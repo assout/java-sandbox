@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -52,6 +53,10 @@ public class LambdaExpressionsTest {
 		class Developer {
 			public Developer(String name) {
 				this.name = name;
+			}
+
+			public String getName() {
+				return name;
 			}
 
 			private final String name;
