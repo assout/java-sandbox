@@ -9,6 +9,7 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
+import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
@@ -19,6 +20,12 @@ import org.junit.rules.TemporaryFolder;
 public class FilesTest {
 	@Rule
 	public TemporaryFolder folder = new TemporaryFolder();
+
+	@Test
+	public void testFiles() throws Exception {
+		Path path = Paths.get("hoge");
+		Files.newInputStream(path);
+	}
 
 	@Test
 	public void testGlob() throws Exception {

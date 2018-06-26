@@ -3,18 +3,35 @@ package jp.gr.java_conf.assout.java;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
 public class LambdaExpressionsTest {
+	@Test
+	public void testName() throws Exception {
+		String s = "hoge";
+		System.out.println(s.length());
+		System.out.println(s.substring(0, s.length()));
+	}
+
+	@Test
+	public void testName2() throws Exception {
+		String s = "ほげほげ";
+		System.out.println(s.substring(0, s.length()));
+	}
+
 	@Test
 	public void test() {
 		// old style
@@ -73,5 +90,26 @@ public class LambdaExpressionsTest {
 		});
 
 		System.out.println(devels);
+	}
+
+	@Test
+	public void testNameA() throws Exception {
+		ClassLoader loader = LambdaExpressionsTest.class.getClassLoader();
+		Properties p = new Properties();
+		try (InputStream propIs = loader.getResourceAsStream("test.properties")) {
+			p.load(propIs);
+		}
+		try (InputStream propIs = loader.getResourceAsStream("test2.properties")) {
+			p.load(propIs);
+		}
+		System.out.println(p);
+	}
+
+	@Test
+	public void testIntStream() throws Exception {
+
+		List<Object> results = IntStream.range(0, 10).boxed().map(Integer::valueOf).collect(Collectors.toList());
+		System.out.println(results);
+
 	}
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration
+	xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="CONSOLE"
+		class="org.apache.log4j.ConsoleAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="TRACE" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern"
+				value="%d{ABSOLUTE} %-5p [%t:%C][%L] %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="trace" />
+			<param name="LevelMax" value="warn" />
+		</filter>
+	</appender>
+
+	<appender name="CONSOLE_ERROR"
+		class="org.apache.log4j.ConsoleAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="Target" value="System.err" />
+		<param name="Threshold" value="ERROR" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern"
+				value="%d{ABSOLUTE} %-5p [%t:%C][%L] %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="CONSOLE_ERROR" />
+	</root>
+</log4j:configuration>

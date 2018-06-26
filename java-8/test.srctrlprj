@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <source_groups>
+        <source_group_1aa35e7d-d2c5-491e-81eb-f1d0bab809e5>
+            <maven>
+                <dependencies_directory>./sourcetrail_dependencies/test/1aa35e7d-d2c5-491e-81eb-f1d0bab809e5/maven</dependencies_directory>
+                <project_file_path>../weld/pom.xml</project_file_path>
+                <should_index_tests>0</should_index_tests>
+            </maven>
+            <name>Java Source Group from Maven</name>
+            <source_extensions>
+                <source_extension>.java</source_extension>
+            </source_extensions>
+            <standard>8</standard>
+            <status>enabled</status>
+            <type>Java Source Group from Maven</type>
+            <use_jre_system_library>1</use_jre_system_library>
+        </source_group_1aa35e7d-d2c5-491e-81eb-f1d0bab809e5>
+    </source_groups>
+    <version>6</version>
+</config>
